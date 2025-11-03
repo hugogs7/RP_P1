@@ -1,6 +1,4 @@
-...xx.
-.xxx..
-x..xxx
-.....x
-.xxxx.
-.xxx..
+..x.
+..x.
+xx.x
+xx..

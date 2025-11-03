@@ -27,8 +27,8 @@ Run the following commands inside the project folder:
 
 ```bash
 
-python3 encode_curved.py examplesthermob/dom09.txt domain.lp
+python encode_curved.py examplesthermob/dom09.txt domain.lp
 
-clingo thermo_curved.lp domain.lp -n 1 > solution.txt
+clingo 0 thermo_curved.lp domain.lp
 
 python decode.py thermo_curved.lp domain.lp > output.txt

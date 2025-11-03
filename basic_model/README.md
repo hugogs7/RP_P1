@@ -32,7 +32,7 @@ This project provides:
 python encode.py examplesthermo/dom01.txt domain.lp
 
 # 2 Solve with Clingo (one solution)
-clingo thermo.lp domain.lp -n 1 > solution.txt
+clingo 0 thermo.lp domain.lp
 
 # 3 Decode the solution to a compact text grid
 python decode.py thermo.lp domain.lp > output.txt
