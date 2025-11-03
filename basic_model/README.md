@@ -1,5 +1,5 @@
 # Thermometers Puzzle Solver
-# HUGO GARCÍA SOUTO AND ALA MAMAS RODRIGUEX.
+# HUGO GARCÍA SOUTO AND ANA LAMAS RODRIGUEZ.
 # 3 NOVEMBER 2025
 
 This project implements a complete pipeline to solve the **Thermometers Puzzle** using **Answer Set Programming (ASP)** with *Clingo* and visualizes the solution with *Pygame*.
