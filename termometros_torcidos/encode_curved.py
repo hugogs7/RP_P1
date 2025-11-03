@@ -1,25 +1,28 @@
 #!/usr/bin/env python3
 """
 encode_curved_rowcol.py
-Lee una instancia ASCII del puzzle (curved thermometers) y genera domain.lp.
-Entrada soporta:
- - Bulbos: U D L R
- - Segmentos rectos: ^ v < >
- - Curvas: 0 1 2 3  (└ ┏ ┐ ┘ en sentido horario)
-Salida: hechos en formato (row,col) con índices 0..N-1:
+Reads an ASCII instance of the puzzle (curved thermometers) and generates domain.lp.
+
+Input supports:
+ - Bulbs: U D L R
+ - Straight segments: ^ v < >
+ - Curved segments: 0 1 2 3  (└ ┏ ┐ ┘ clockwise)
+
+Output: facts in (row, col) format with indices 0..N-1:
   dim(N).
-  bulb(Row,Col,Dir).   Dir = up|down|left|right
+  bulb(Row,Col,Dir).    Dir = up|down|left|right
   seg(Row,Col,Dir).
-  curve(Row,Col,Type). Type = 0..3
+  curve(Row,Col,Type).  Type = 0..3
   colCount(Col,Num).
   rowCount(Row,Num).
-Uso:
-  python3 encode_curved_rowcol.py entrada.txt domain.lp
+
+Usage:
+  python3 encode_curved_rowcol.py input.txt domain.lp
 """
 import sys
 
 if len(sys.argv) != 3:
-    print("Uso: python3 encode_curved_rowcol.py entrada.txt domain.lp")
+    print("Use: python3 encode_curved_rowcol.py entrada.txt domain.lp")
     sys.exit(1)
 
 infile = sys.argv[1]
@@ -33,7 +36,7 @@ with open(infile, 'r', encoding='utf-8') as f:
     lines = [line.rstrip('\n') for line in f.readlines()]
 
 if len(lines) < 3:
-    print("Entrada inválida: muy pocas líneas.")
+    print("Invalid input: too few lines.")
     sys.exit(1)
 
 col_line = lines[-2].strip()
@@ -41,22 +44,22 @@ row_line = lines[-1].strip()
 grid_lines = lines[:-2]
 n = len(grid_lines)
 
-# comprobar cuadrado
+
 for i, row in enumerate(grid_lines, start=1):
     if len(row) != n:
-        print(f"Fila {i} tiene longitud {len(row)} distinta de n={n}.")
+        print(f"Row {i} has length {len(row)}, which differs from n={n}.")
         sys.exit(1)
 
-# parseo contadores
+
 try:
     col_counts = [int(x) for x in col_line.split()]
     row_counts = [int(x) for x in row_line.split()]
 except ValueError:
-    print("Contadores inválidos.")
+    print("Invalid counters")
     sys.exit(1)
 
 if len(col_counts) != n or len(row_counts) != n:
-    print("Número de contadores distinto de n.")
+    print("Diferent from n.")
     sys.exit(1)
 
 with open(outfile, 'w', encoding='utf-8') as out:
@@ -72,7 +75,7 @@ with open(outfile, 'w', encoding='utf-8') as out:
             elif ch in curve_chars:
                 out.write(f"curve({row},{col},{curve_chars[ch]}).\n")
             else:
-                print(f"Caracter desconocido '{ch}' en ({row},{col}).")
+                print(f"Unknown character ‘{ch}’ at ({row},{col}).")
                 sys.exit(1)
     out.write("\n")
     for i, num in enumerate(col_counts):

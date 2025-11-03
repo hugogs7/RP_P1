@@ -1,0 +1,11 @@
+clingo version 5.8.0
+Reading from thermo_curved.lp ...
+Solving...
+Answer: 1 (Time: 0.008s)
+fill(0,4) fill(1,1) fill(2,0) fill(3,5) fill(4,1) fill(5,1) fill(1,2) fill(2,3) fill(2,4) fill(4,2) fill(4,3) fill(5,2) fill(5,3) fill(0,3) fill(1,3) fill(2,5) fill(4,4)
+SATISFIABLE
+
+Models       : 1+
+Calls        : 1
+Time         : 0.008s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.003s
